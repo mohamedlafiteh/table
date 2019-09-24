@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+th,
+td {
+  width: 10%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: grey;
+}
+
+.screenreader {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

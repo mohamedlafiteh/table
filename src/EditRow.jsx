@@ -8,13 +8,13 @@ export class EditRow extends Component {
       countryEditValue: props.country
     };
   }
-  onChangeValue = e => {
+  handleChange = e => {
     this.setState({
       [`${e.target.name}EditValue`]: e.target.value
     });
   };
 
-  onSave = () => {
+  handleSave = () => {
     this.props.saveRow(
       this.props.id,
       this.state.nameEditValue,
@@ -25,29 +25,33 @@ export class EditRow extends Component {
     return (
       <div>
         <tr>
-          <td scope="row">{this.props.id}</td>
+          <td>{this.props.id}</td>
           <td>
-            <label for="name">Name</label>
+            <label className="screenreader" for="name">
+              Name
+            </label>
             <input
               id="name"
-              type="text"
               name="name"
+              type="text"
               value={this.state.nameEditValue}
-              onChange={this.onChangeValue}
+              onChange={this.handleChange}
             />
           </td>
-          <td scope="row">
-            <label for="country">Country</label>
+          <td>
+            <label className="screenreader" for="country">
+              Country
+            </label>
             <input
               id="country"
               name="country"
               type="text"
               value={this.state.countryEditValue}
-              onChange={this.onChangeValue}
+              onChange={this.handleChange}
             />
           </td>
-          <td scope="row">
-            <button onClick={this.onSave}>Save</button>
+          <td>
+            <button onClick={this.handleSave}>Save</button>
           </td>
         </tr>
       </div>

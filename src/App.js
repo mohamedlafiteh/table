@@ -1,16 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import DataTable from "./DataTable";
-function App() {
-  return (
-    <div className="App">
-      <h1
-        style={{ textAlign: "center", backgoundColor: "green", color: "black" }}
-      >
-        Edit Table
-      </h1>
-      <DataTable />
-    </div>
-  );
+import "./App.css";
+
+export class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <DataTable />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,49 +1,49 @@
 import React, { Component } from "react";
-import EditRow from "./EditRow";
 import ViewTable from "./ViewTable";
+import EditRow from "./EditRow";
 export class DataTable extends Component {
   constructor() {
     super();
     this.state = {
       data: [
-        { id: 1, name: "Mohamed", country: "Libya" },
-        { id: 2, name: "Sam", country: "Sudan" },
-        { id: 3, name: "Hamza", country: "Poland" }
+        { id: 1, name: "Mo", country: "Libya" },
+        { id: 2, name: "Joe", country: "America" },
+        { id: 3, name: "jim", country: "China" }
       ],
-      selectedEditIdRow: null
+      selectedEditRowId: null
     };
   }
   editRow = id => {
     this.setState({
-      selectedEditIdRow: id
+      selectedEditRowId: id
     });
   };
-
   saveRow = (id, name, country) => {
     const newData = this.state.data.filter(row => row.id !== id);
-    const updateRow = { id, name, country };
-    newData.splice(id - 1, 0, updateRow);
+    const updatedRow = { id, name, country };
+    newData.splice(id - 1, 0, updatedRow);
     this.setState({
-      selectedEditIdRow: null,
+      selectedEditRowId: null,
       data: newData
     });
   };
+
   render() {
     return (
       <div>
         <form>
-          <ttable className="table table-bordered">
-            <thead className="thead-dark">
+          <ttable>
+            <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Country</th>
-                <th scope="col">Action</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Action</th>
               </tr>
             </thead>
-            <body>
+            <tbody>
               {this.state.data.map(row => {
-                if (row.id === this.state.selectedEditIdRow) {
+                if (row.id === this.state.selectedEditRowId) {
                   return (
                     <EditRow
                       id={row.id}
@@ -63,7 +63,7 @@ export class DataTable extends Component {
                   );
                 }
               })}
-            </body>
+            </tbody>
           </ttable>
         </form>
       </div>
